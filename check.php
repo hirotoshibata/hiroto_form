@@ -1,4 +1,4 @@
-<<?php
+<?php
     $nickname = $_POST['nickname'];
     // スーパーグローバル関数
     $email = $_POST['email'];
@@ -26,7 +26,7 @@
     }
 
     ?>
-    <<!DOCTYPE html>
+    <!DOCTYPE html>
     <html lang="ja">
     <head>
         <meta charset="UTF-8">
@@ -37,5 +37,14 @@
         <p><?php echo $nickname_result ?></p>
         <p><?php echo $email_result ?></p>
         <p><?php echo $content_result ?></p>
+        <form method ="POST" action="thanks.php">
+            <input type="hidden" name="nickname" value="<?php echo $nickname?>">
+            <input type="hidden" name="email" value="<?php echo $email?>">
+            <input type="hidden" name="content" value="<?php echo $content?>">
+            <input type="button" value="戻る" onclick="history.back()">
+            <?php if ($nickname !='' && $email !='' && $content !=''): //コロン構文?>
+            <input type="submit" value="OK">
+            <?php endif ?>
+        </form>
     </body>
     </html>
