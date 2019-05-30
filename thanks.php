@@ -1,8 +1,13 @@
 <?php
-    $nickname = $_POST['nickname'];
+if ($_SEVER['REQUEST_METHOD'] === 'GET') {
+    header('Location: index.html');
+}
+
+require_once('function.php');
+    $nickname = h($_POST['nickname']);
     // スーパーグローバル関数
-    $email = $_POST['email'];
-    $content = $_POST['content'];
+    $email = h($_POST['email']);
+    $content = h($_POST['content']);
 ?>
 <!DOCTYPE html>
 <html lang="ja">

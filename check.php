@@ -1,8 +1,19 @@
 <?php
-    $nickname = $_POST['nickname'];
+
+    // メソッドがGETの時はトップページにリダイレクト
+if ($_SEVER['REQUEST_METHOD'] === 'GET') {
+    header('Location: index.html');
+}
+
+    
+
+    // 関数の呼び出し
+    require_once('function.php');
+
     // スーパーグローバル関数
-    $email = $_POST['email'];
-    $content = $_POST['content'];
+    $nickname = h($_POST['nickname']);
+    $email = h($_POST['email']);
+    $content = h($_POST['content']);
     // echo $nickname;
 
     if ($nickname ==''){
