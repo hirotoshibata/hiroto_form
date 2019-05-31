@@ -5,8 +5,6 @@ if ($_SEVER['REQUEST_METHOD'] === 'GET') {
     header('Location: index.html');
 }
 
-    
-
     // 関数の呼び出し
     require_once('function.php');
 
