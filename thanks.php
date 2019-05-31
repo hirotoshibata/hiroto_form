@@ -1,13 +1,19 @@
 <?php
-if ($_SEVER['REQUEST_METHOD'] === 'GET') {
-    header('Location: index.html');
-}
+// if ($_SEVER['REQUEST_METHOD'] === 'GET') {
+    // header('Location: index.html');
+// }
 
 require_once('function.php');
+
     $nickname = h($_POST['nickname']);
     // スーパーグローバル関数
     $email = h($_POST['email']);
     $content = h($_POST['content']);
+    // DBとの接続
+    require_once('dbconnect.php');
+    $stmt = $dbh->prepare('INSERT INTO surveys (nickname,email,content) VALUES(?,?,?)');
+    $stmt->execute([$nickname,$email,$content]);
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
