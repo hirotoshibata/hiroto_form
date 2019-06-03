@@ -14,22 +14,46 @@ $stmt->execute(["%$nickname%"]);
 $results = $stmt->fetchAll();
 
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- BootstrapのCSS読み込み -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery読み込み -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- BootstrapのJS読み込み -->
+    <script src="bootstrap.min.js"></script>
 </head>
 <body>
     <form action="search.php" method="GET">
         <input type="text" name="nickname">
         <input type="submit" value="検索">
     </form>
-    
-    <?php foreach ($results as $result): ?>
-        <p><?php echo $result ['nickname'];?></p>
-        <p><?php echo $result ['email'];?></p>
-        <p><?php echo $result ['content'];?></p>
-    <?php endforeach;?>
+    <div class="container">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+       
+        <th>名前</th>
+        <th>メールアドレス</th>
+        <th>お問い合わせ</th>
+      </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($results as $result): ?>
+            <tr>
+          <td><?php echo $result ['nickname'];?></td>
+          <td><?php echo $result ['email'];?></td>
+          <td><?php echo $result ['content']; ?></td>
+            </tr>
+          <?php endforeach;?>
+    </tbody>
+  </table>
+</div>
 </body>
 </html>
